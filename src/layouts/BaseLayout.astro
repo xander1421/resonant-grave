@@ -99,6 +99,13 @@ const { title, description = "A dark science fiction saga where consciousness is
     padding: 0;
   }
 
+  /* Force hardware acceleration and 60fps */
+  * {
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+  }
+
   /* Cyber effects */
   .scanlines {
     position: fixed;
@@ -176,7 +183,7 @@ const { title, description = "A dark science fiction saga where consciousness is
     position: relative;
     color: var(--color-primary);
     text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
-    animation: text-flicker 15s infinite;
+    animation: text-flicker 15s infinite linear;
   }
 
   @keyframes text-flicker {
@@ -216,13 +223,13 @@ const { title, description = "A dark science fiction saga where consciousness is
   .glitch::before {
     color: var(--color-secondary);
     z-index: -1;
-    animation: glitch-1 2.5s infinite;
+    animation: glitch-1 2.5s infinite steps(60);
   }
 
   .glitch::after {
     color: var(--color-accent);
     z-index: -2;
-    animation: glitch-2 2.5s infinite;
+    animation: glitch-2 2.5s infinite steps(60);
   }
 
   @keyframes glitch-1 {
@@ -296,7 +303,7 @@ const { title, description = "A dark science fiction saga where consciousness is
     color: var(--color-primary);
     white-space: pre;
     line-height: 1.2;
-    animation: rain 20s linear infinite;
+    animation: rain 20s steps(60) infinite;
     width: 200%;
   }
 
@@ -324,7 +331,7 @@ const { title, description = "A dark science fiction saga where consciousness is
       rgba(0, 255, 204, 0.03) 50%,
       transparent 100%
     );
-    animation: glitch-overlay 20s infinite;
+    animation: glitch-overlay 20s infinite steps(60);
   }
 
   @keyframes glitch-overlay {
@@ -356,19 +363,38 @@ const { title, description = "A dark science fiction saga where consciousness is
       linear-gradient(rgba(0, 255, 204, 0.1) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 255, 204, 0.1) 1px, transparent 1px);
     background-size: 50px 50px;
-    animation: neural-pulse 20s ease-in-out infinite;
+    animation: neural-pulse 20s steps(60) infinite;
     pointer-events: none;
     z-index: 1;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Fix for high refresh rate displays (90Hz, 120Hz) */
+  @media (max-width: 768px) {
+    .neural-network,
+    .hologram-grid,
+    .digital-rain,
+    .glitch-overlay {
+      animation-play-state: paused;
+      animation: none !important;
+      opacity: 0.05;
+    }
+    
+    .glitch::before,
+    .glitch::after {
+      animation-play-state: paused;
+    }
   }
 
   @keyframes neural-pulse {
     0%, 100% {
-      transform: scale(1) rotate(0deg);
+      transform: translateZ(0) scale(1);
       opacity: 0.1;
     }
     50% {
-      transform: scale(1.1) rotate(1deg);
-      opacity: 0.15;
+      transform: translateZ(0) scale(1.05);
+      opacity: 0.12;
     }
   }
 
@@ -394,7 +420,7 @@ const { title, description = "A dark science fiction saga where consciousness is
         rgba(255, 0, 110, 0.03) 2px,
         rgba(255, 0, 110, 0.03) 4px
       );
-    animation: grid-shift 10s linear infinite;
+    animation: grid-shift 10s steps(60) infinite;
     pointer-events: none;
     z-index: 2;
   }
@@ -467,7 +493,7 @@ const { title, description = "A dark science fiction saga where consciousness is
   }
 
   #freq {
-    animation: flicker 3s infinite;
+    animation: flicker 3s infinite steps(60);
   }
 
   @keyframes flicker {
@@ -579,6 +605,12 @@ const { title, description = "A dark science fiction saga where consciousness is
     const container = document.querySelector('.digital-rain');
     if (!container) return;
     
+    // Disable on mobile to prevent performance issues
+    if (window.innerWidth <= 768) {
+      container.style.display = 'none';
+      return;
+    }
+    
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
     const columns = Math.floor(window.innerWidth / 20);
     
@@ -593,7 +625,7 @@ const { title, description = "A dark science fiction saga where consciousness is
         color: var(--color-primary);
         writing-mode: vertical-rl;
         text-orientation: upright;
-        animation: matrix-fall ${5 + Math.random() * 10}s linear infinite;
+        animation: matrix-fall ${5 + Math.random() * 10}s steps(60) infinite;
         animation-delay: ${Math.random() * 5}s;
         opacity: ${0.1 + Math.random() * 0.2};
       `;
