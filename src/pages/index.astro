@@ -1,16 +1,351 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="data-corruption">
+        <span>SYSTEM_BREACH_DETECTED</span>
+        <span>CONSCIOUSNESS_OVERFLOW</span>
+        <span>REALITY_BUFFER_CORRUPTED</span>
+      </div>
+      <h1 class="title">
+        <span class="line-1 cyber-text">THE</span>
+        <span class="line-2 glitch" data-text="RESONANT">RESONANT</span>
+        <span class="line-3 distort">GRAVE</span>
+      </h1>
+      <p class="tagline typewriter">A dark science fiction saga where consciousness is currency and harmony has a price.</p>
+      <div class="cta-container">
+        <a href="/chapters" class="cta-primary">
+          <span class="cta-text">BEGIN TRANSMISSION</span>
+          <div class="pulse"></div>
+          <div class="interference"></div>
+        </a>
+      </div>
+      <div class="ai-whisper">
+        <span class="whisper-text">// KAI-7: "You are not fuel..."</span>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+
+  /* Data Corruption Warning */
+  .data-corruption {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 0.7rem;
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--color-secondary);
+    opacity: 0.5;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    animation: corruption-flicker 10s infinite;
+  }
+
+  .data-corruption span {
+    display: block;
+    margin-bottom: 2rem;
+    letter-spacing: 0.2em;
+  }
+
+  @keyframes corruption-flicker {
+    0%, 100% {
+      opacity: 0.5;
+      filter: blur(0);
+    }
+    10% {
+      opacity: 1;
+      filter: blur(1px);
+    }
+    11% {
+      opacity: 0.2;
+      filter: blur(2px);
+    }
+    12% {
+      opacity: 0.8;
+      filter: blur(0);
+    }
+  }
+
+  /* Cyber Text Effect */
+  .cyber-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .cyber-text::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    animation: scan-line 3s infinite;
+  }
+
+  @keyframes scan-line {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Distortion Effect */
+  .distort {
+    animation: distort 20s infinite;
+  }
+
+  @keyframes distort {
+    0%, 100% {
+      transform: skew(0deg, 0deg);
+      filter: blur(0);
+    }
+    94% {
+      transform: skew(0deg, 0deg);
+      filter: blur(0);
+    }
+    94.1% {
+      transform: skew(0.5deg, 0deg);
+      filter: blur(1px);
+    }
+    94.2% {
+      transform: skew(-0.5deg, 0deg);
+      filter: blur(0);
+    }
+  }
+
+  /* Typewriter Effect - removed to prevent word cutting */
+  .typewriter {
+    white-space: normal;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+
+  /* CTA Enhancements */
+  .cta-primary {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(0, 255, 204, 0.1) 0%, rgba(255, 0, 110, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 204, 0.5);
+    box-shadow: 
+      0 0 20px rgba(0, 255, 204, 0.3),
+      inset 0 0 20px rgba(0, 255, 204, 0.1);
+  }
+
+  .interference {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: interference 3s infinite;
+  }
+
+  @keyframes interference {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  .cta-text {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* AI Whisper */
+  .ai-whisper {
+    margin-top: 3rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    opacity: 0;
+    animation: whisper-fade 10s infinite;
+  }
+
+  @keyframes whisper-fade {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .whisper-text {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 183, 0, 0.3);
+    background: rgba(0, 0, 0, 0.8);
+    position: relative;
+  }
+
+  .whisper-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 183, 0, 0.1) 50%, transparent 70%);
+    animation: whisper-scan 3s linear infinite;
+  }
+
+  @keyframes whisper-scan {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .hero-content {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .title span {
+    display: block;
+    line-height: 0.9;
+  }
+
+  .line-1 {
+    font-size: 2rem;
+    color: var(--color-text-dim);
+    letter-spacing: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .line-2 {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    letter-spacing: 0.2rem;
+    text-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
+  }
+
+  .line-3 {
+    font-size: 3rem;
+    color: var(--color-secondary);
+    letter-spacing: 0.8rem;
+    margin-top: -0.5rem;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+    color: var(--color-text-dim);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .cta-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-primary, .cta-secondary {
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 1px solid currentColor;
+  }
+
+  .cta-primary {
+    color: var(--color-bg);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .cta-primary:hover {
+    background: transparent;
+    color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+  }
+
+  .cta-secondary {
+    color: var(--color-secondary);
+    background: transparent;
+  }
+
+  .cta-secondary:hover {
+    background: var(--color-secondary);
+    color: var(--color-bg);
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+  }
+
+  .pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--color-primary);
+    pointer-events: none;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.3);
+      opacity: 0;
+    }
+  }
+
+
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .line-1 {
+      font-size: 1.5rem;
+    }
+    .line-2 {
+      font-size: 3rem;
+    }
+    .line-3 {
+      font-size: 2rem;
+    }
+  }
+</style>

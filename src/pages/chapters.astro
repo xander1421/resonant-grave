@@ -1,0 +1,373 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const chapters = [
+  {
+    number: 1,
+    title: "The Crucible",
+    excerpt: "In a place where humans are liquefied for light, a child was born who burned instead of melted.",
+    status: "available",
+    frequency: "42.7"
+  },
+  {
+    number: 2,
+    title: "The Silence After", 
+    excerpt: "In the ruins of the Crucible, Kyre-Seven discovers that being free means being hunted.",
+    status: "available",
+    frequency: "NULL"
+  },
+  {
+    number: 3,
+    title: "?????",
+    excerpt: "Frequency interference detected. Awaiting synchronization.",
+    status: "coming_soon",
+    frequency: "???"
+  },
+  {
+    number: 4,
+    title: "?????",
+    excerpt: "Resonance patterns unstable. Content encrypted.",
+    status: "coming_soon",
+    frequency: "???"
+  },
+  {
+    number: 5,
+    title: "?????",
+    excerpt: "Transmission pending. Monitor this frequency.",
+    status: "coming_soon",
+    frequency: "???"
+  }
+];
+---
+
+<BaseLayout title="Chapters">
+  <div class="chapters-header">
+    <h1 class="glitch" data-text="TRANSMISSIONS">TRANSMISSIONS</h1>
+    <p class="subtitle">Fragments received from the Resonant Field</p>
+  </div>
+
+  <div class="chapters-grid">
+    {chapters.map((chapter) => (
+      <article class={`chapter-card ${chapter.status}`}>
+        <div class="chapter-number">
+          <span class="label">CHAPTER</span>
+          <span class="number">{chapter.number.toString().padStart(2, '0')}</span>
+        </div>
+        
+        <div class="chapter-content">
+          <h2 class="chapter-title">{chapter.title}</h2>
+          <p class="chapter-excerpt">{chapter.excerpt}</p>
+          
+          <div class="chapter-meta">
+            <div class="meta-item">
+              <span class="meta-label">FREQ</span>
+              <span class="meta-value">{chapter.frequency} Hz</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="chapter-action">
+          {chapter.status === 'available' ? (
+            <a href={`/chapter/${chapter.number}`} class="read-button">
+              <span>ACCESS FILE</span>
+              <div class="scan-line"></div>
+            </a>
+          ) : (
+            <button class="locked-button" disabled>
+              <span>ENCRYPTED</span>
+              <div class="static"></div>
+            </button>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="transmission-log">
+    <div class="log-header">
+      <span class="log-icon">◈</span>
+      <span>TRANSMISSION LOG</span>
+    </div>
+    <div class="log-entries">
+      <div class="log-entry">
+        <span class="timestamp">2024.10.19 // 22:47</span>
+        <span class="message">Chapter 1 signal stabilized. Frequency lock achieved.</span>
+      </div>
+      <div class="log-entry">
+        <span class="timestamp">2024.10.20 // --:--</span>
+        <span class="message">Detecting resonance anomalies. New transmissions incoming...</span>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .chapters-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .chapters-header h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: var(--color-text-dim);
+    font-size: 1.2rem;
+  }
+
+  .chapters-grid {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .chapter-card {
+    background: var(--color-surface);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .chapter-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--color-primary) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .chapter-card:hover::before {
+    opacity: 1;
+  }
+
+  .chapter-card.available:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+  }
+
+  .chapter-card.coming_soon {
+    opacity: 0.7;
+  }
+
+  .chapter-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--color-primary);
+    background: rgba(0, 255, 204, 0.05);
+  }
+
+  .chapter-number .label {
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .chapter-number .number {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-primary);
+  }
+
+  .chapter-content {
+    flex: 1;
+  }
+
+  .chapter-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+  }
+
+  .chapter-excerpt {
+    color: var(--color-text-dim);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .chapter-meta {
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-start;
+  }
+
+  .meta-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+
+  .meta-label {
+    color: var(--color-text-dim);
+  }
+
+  .meta-value {
+    color: var(--color-accent);
+    font-family: 'Orbitron', monospace;
+  }
+
+  .read-button, .locked-button {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid currentColor;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .read-button {
+    color: var(--color-primary);
+  }
+
+  .read-button:hover {
+    background: var(--color-primary);
+    color: var(--color-bg);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+  }
+
+  .locked-button {
+    color: var(--color-text-dim);
+    border-color: var(--color-text-dim);
+    cursor: not-allowed;
+  }
+
+  .scan-line {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 204, 0.5) 50%, transparent 100%);
+    animation: scan 3s infinite;
+  }
+
+  @keyframes scan {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  .static {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj4KICA8ZmlsdGVyIGlkPSJub2lzZSI+CiAgICA8ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC45IiBudW1PY3RhdmVzPSI0IiAvPgogIDwvZmlsdGVyPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuNSIvPgo8L3N2Zz4=');
+    opacity: 0.1;
+    animation: flicker 0.5s infinite;
+  }
+
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 0.2;
+    }
+  }
+
+  /* Transmission log */
+  .transmission-log {
+    background: var(--color-surface);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    padding: 2rem;
+    margin-top: 4rem;
+  }
+
+  .log-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .log-icon {
+    font-size: 1.5rem;
+    animation: pulse-icon 2s infinite;
+  }
+
+  @keyframes pulse-icon {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .log-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .log-entry {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+    padding-left: 2rem;
+  }
+
+  .timestamp {
+    color: var(--color-accent);
+    font-family: 'Share Tech Mono', monospace;
+    white-space: nowrap;
+  }
+
+  .message {
+    color: var(--color-text-dim);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .chapters-header h1 {
+      font-size: 2.5rem;
+    }
+    
+    .chapter-card {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+    
+    .chapter-number {
+      flex-direction: row;
+      gap: 1rem;
+      justify-content: center;
+    }
+    
+    .log-entry {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>
