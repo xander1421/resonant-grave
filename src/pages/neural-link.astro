@@ -1,0 +1,691 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="NEURAL LINK ESTABLISHED" description="You've found the secret neural interface">
+  <div class="terminal-container">
+    <div class="terminal-header">
+      <span class="terminal-title">RESONANCE_CORE_v42.7</span>
+      <div class="terminal-controls">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green pulse"></span>
+      </div>
+    </div>
+
+    <div class="terminal-content">
+      <div class="header-box">
+        <pre class="header-text">
+    ╔════════════════════════════════════════╗
+    ║   UNAUTHORIZED ACCESS DETECTED...      ║
+    ║   JUST KIDDING! WELCOME, READER :)     ║
+    ╚════════════════════════════════════════╝
+        </pre>
+      </div>
+
+      <div class="drive-container">
+        <pre class="drive-label">NEURAL CONSCIOUSNESS STORAGE DRIVE - CORE 42.7</pre>
+        <pre id="spinning-donut" class="spinning-drive"></pre>
+        <div class="drive-stats-box">
+          <div class="stat-line">
+            <span class="stat-key">CONSCIOUSNESS UPLOAD:</span>
+            <span class="stat-bar">
+              <span class="progress-fill" style="width: 47%">████████████████░░░░░░░░░░░░░░</span>
+            </span>
+            <span class="stat-percent">47%</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-key">RESONANCE FREQUENCY:</span>
+            <span class="stat-val frequency-flicker">42.7 Hz</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-key">NEURAL INTEGRITY:</span>
+            <span class="stat-val success">MAXIMUM ✓</span>
+          </div>
+          <div class="stat-line">
+            <span class="stat-key">QUANTUM SPIN RATE:</span>
+            <span class="stat-val">∞ Hz (TRANSCENDENT)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal-output">
+        <p class="line delay-1"><span class="prompt">$</span> accessing_secret_files.exe</p>
+        <p class="line delay-2"><span class="success">SUCCESS:</span> You found the easter egg!</p>
+        <p class="line delay-3"><span class="info">INFO:</span> Fun fact - consciousness tastes like static electricity</p>
+        <p class="line delay-4"><span class="warning">WARNING:</span> Reading this may cause existential questions</p>
+        <p class="line delay-5"><span class="prompt">$</span> echo "What if the real resonance was the friends we made along the way?"</p>
+        <p class="line delay-6 quote">What if the real resonance was the friends we made along the way?</p>
+        <p class="line delay-7"><span class="error">ERROR:</span> Just kidding. It's definitely the brain uploads.</p>
+        <p class="line delay-8"><span class="prompt">$</span> display_secret_message</p>
+        <p class="line delay-9 secret-msg">
+          █▀▀ █▀█ █▄░█ █▀▀ █▀█ ▄▀█ ▀█▀ █▀<br>
+          █▄▄ █▄█ █░▀█ █▄█ █▀▄ █▀█ ░█░ ▄█<br>
+          <span class="sub-text">You've reached peak consciousness!</span>
+        </p>
+        <p class="line delay-10"><span class="info">TIP:</span> Share this page? Nah, keep it secret 🤫</p>
+        <p class="line delay-11 cursor-line"><span class="prompt">$</span> <span class="cursor">█</span></p>
+      </div>
+
+      <div class="fun-stats">
+        <div class="stat-box">
+          <div class="stat-label">NEURAL PATHWAYS</div>
+          <div class="stat-value" id="pathways">0</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">GLITCH DETECTED</div>
+          <div class="stat-value glitch-text" data-text="∞">∞</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">VIBE CHECK</div>
+          <div class="stat-value">IMMACULATE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-link-container">
+    <a href="/" class="secret-back">← Return to Reality</a>
+  </div>
+</BaseLayout>
+
+<style>
+  .terminal-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    box-shadow:
+      0 0 30px rgba(0, 255, 204, 0.3),
+      inset 0 0 50px rgba(0, 255, 204, 0.05);
+    overflow: hidden;
+  }
+
+  .terminal-header {
+    background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--color-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .terminal-title {
+    color: var(--color-primary);
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+  }
+
+  .terminal-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot.red {
+    background: #ff5f56;
+  }
+
+  .dot.yellow {
+    background: #ffbd2e;
+  }
+
+  .dot.green {
+    background: var(--color-primary);
+  }
+
+  .dot.pulse {
+    animation: pulse-dot 2s infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 5px var(--color-primary);
+    }
+    50% {
+      opacity: 0.7;
+      box-shadow: 0 0 15px var(--color-primary);
+    }
+  }
+
+  .terminal-content {
+    padding: 2rem;
+    min-height: 400px;
+  }
+
+  .header-box {
+    margin-bottom: 2rem;
+  }
+
+  .header-text {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    line-height: 1.3;
+    text-align: center;
+    animation: flicker-in 1s ease-in;
+  }
+
+  .drive-container {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .drive-label {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 183, 0, 0.5);
+  }
+
+  .spinning-drive {
+    color: var(--color-primary);
+    font-size: 0.55rem;
+    line-height: 1;
+    margin: 0;
+    text-align: left;
+    text-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Share Tech Mono', monospace;
+    white-space: pre;
+    letter-spacing: 0;
+    background: rgba(0, 255, 204, 0.02);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    border-radius: 4px;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .drive-stats-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(0, 255, 204, 0.05);
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    border-radius: 4px;
+  }
+
+  .stat-line {
+    display: flex;
+    align-items: center;
+    margin: 0.75rem 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+  }
+
+  .stat-key {
+    color: var(--color-text-dim);
+    min-width: 220px;
+    margin-right: 1rem;
+  }
+
+  .stat-val {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .stat-val.success {
+    color: var(--color-primary);
+  }
+
+  .stat-bar {
+    flex: 1;
+    margin-right: 1rem;
+    color: var(--color-primary);
+  }
+
+  .stat-percent {
+    color: var(--color-accent);
+    font-weight: 700;
+    min-width: 50px;
+  }
+
+  .frequency-flicker {
+    animation: freq-flicker 3s infinite;
+  }
+
+  @keyframes freq-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes flicker-in {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 0;
+    }
+    10.1% {
+      opacity: 1;
+    }
+    10.2% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0;
+    }
+    20.1% {
+      opacity: 1;
+    }
+    20.6% {
+      opacity: 0;
+    }
+    30% {
+      opacity: 0;
+    }
+    30.1% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .terminal-output {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.95rem;
+  }
+
+  .line {
+    margin: 0.75rem 0;
+    opacity: 0;
+    animation: fade-in 0.3s forwards;
+  }
+
+  .delay-1 { animation-delay: 1s; }
+  .delay-2 { animation-delay: 1.5s; }
+  .delay-3 { animation-delay: 2s; }
+  .delay-4 { animation-delay: 2.5s; }
+  .delay-5 { animation-delay: 3s; }
+  .delay-6 { animation-delay: 3.5s; }
+  .delay-7 { animation-delay: 4s; }
+  .delay-8 { animation-delay: 4.5s; }
+  .delay-9 { animation-delay: 5s; }
+  .delay-10 { animation-delay: 5.5s; }
+  .delay-11 { animation-delay: 6s; }
+
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .prompt {
+    color: var(--color-accent);
+    margin-right: 0.5rem;
+  }
+
+  .success {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .info {
+    color: #00d4ff;
+  }
+
+  .warning {
+    color: var(--color-accent);
+  }
+
+  .error {
+    color: var(--color-secondary);
+  }
+
+  .quote {
+    color: var(--color-text-dim);
+    font-style: italic;
+    padding-left: 2rem;
+  }
+
+  .secret-msg {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-align: center;
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .sub-text {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 0.5rem;
+    letter-spacing: 0.15em;
+  }
+
+  .cursor-line {
+    margin-top: 1.5rem;
+  }
+
+  .cursor {
+    animation: blink 1s infinite;
+    color: var(--color-primary);
+  }
+
+  @keyframes blink {
+    0%, 50% {
+      opacity: 1;
+    }
+    51%, 100% {
+      opacity: 0;
+    }
+  }
+
+  .fun-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 255, 204, 0.3);
+  }
+
+  .stat-box {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0, 255, 204, 0.05);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .stat-box:hover {
+    background: rgba(0, 255, 204, 0.1);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .stat-label {
+    color: var(--color-text-dim);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-value {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Orbitron', monospace;
+  }
+
+  .glitch-text {
+    position: relative;
+    color: var(--color-secondary);
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-text::before {
+    color: var(--color-primary);
+    animation: glitch-1 2s infinite;
+  }
+
+  .glitch-text::after {
+    color: var(--color-accent);
+    animation: glitch-2 2s infinite;
+  }
+
+  .back-link-container {
+    text-align: center;
+    margin: 2rem 0 4rem;
+  }
+
+  .secret-back {
+    color: var(--color-text-dim);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+
+  .secret-back:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .terminal-container {
+      margin: 1rem;
+    }
+
+    .terminal-content {
+      padding: 1rem;
+    }
+
+    .header-text {
+      font-size: 0.6rem;
+    }
+
+    .drive-label {
+      font-size: 0.7rem;
+    }
+
+    .spinning-drive {
+      font-size: 0.3rem;
+      line-height: 0.9;
+      letter-spacing: 0;
+      min-height: 300px;
+      padding: 0.5rem;
+    }
+
+    .drive-stats-box {
+      padding: 1rem;
+    }
+
+    .stat-line {
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 0.75rem;
+    }
+
+    .stat-key {
+      min-width: auto;
+      margin-bottom: 0.25rem;
+    }
+
+    .terminal-output {
+      font-size: 0.85rem;
+    }
+
+    .fun-stats {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // ULTRA POWERFUL SPINNING DONUT - Based on a1k0n's algorithm
+  const donutEl = document.getElementById('spinning-donut');
+
+  let A = 0, B = 0;
+  const screen_width = 140;
+  const screen_height = 40;
+  let runnerPos = 0;
+  let runnerFrame = 0;
+
+  // Running character frames (main character escaping consciousness upload)
+  const runnerFrames = [
+    [
+      '    O    ',
+      '   /|\\   ',
+      '   / \\   '
+    ],
+    [
+      '    O    ',
+      '  _/|\\   ',
+      '    |\\   '
+    ],
+    [
+      '    O    ',
+      '   /|\\__ ',
+      '   /|    '
+    ],
+    [
+      '    O    ',
+      '   /|\\   ',
+      '  _/ \\   '
+    ]
+  ];
+
+  function renderDonut() {
+    if (!donutEl) return;
+
+    const b = [];
+    const z = [];
+
+    // Initialize buffers
+    for (let i = 0; i < screen_width * screen_height; i++) {
+      b[i] = ' ';
+      z[i] = 0;
+    }
+
+    const cosA = Math.cos(A);
+    const sinA = Math.sin(A);
+    const cosB = Math.cos(B);
+    const sinB = Math.sin(B);
+
+    // j - goes around the cross-sectional circle of a torus
+    for (let j = 0; j < 6.28; j += 0.07) {
+      const cosj = Math.cos(j);
+      const sinj = Math.sin(j);
+
+      // i - goes around the center of revolution of a torus
+      for (let i = 0; i < 6.28; i += 0.02) {
+        const cosi = Math.cos(i);
+        const sini = Math.sin(i);
+
+        // Circle offset (R1 + R2*cos(j))
+        const circlex = 2 + cosj;
+        const h = circlex * cosi;
+        const D = 1 / (circlex * sinA * sini + sinj * cosA + 5);
+        const t = circlex * cosA * sini - sinj * sinA;
+
+        // 2D projection
+        const x = Math.floor(screen_width / 2 + 40 * D * (h * cosB - t * sinB));
+        const y = Math.floor(screen_height / 2 - 20 * D * (h * sinB + t * cosB));
+        const o = x + screen_width * y;
+
+        // Luminance
+        const N = Math.floor(8 * ((sinj * sinA - circlex * cosA * sini) * cosB -
+                             circlex * cosA * sini * sinB - sinj * cosA -
+                             circlex * sinA * sini));
+
+        if (y >= 0 && y < screen_height && x >= 0 && x < screen_width && D > z[o]) {
+          z[o] = D;
+          const luminance_index = N > 0 ? N : 0;
+          b[o] = '.,-~:;=!*#$@'[luminance_index > 11 ? 11 : luminance_index];
+        }
+      }
+    }
+
+    // Add energy particles around the donut
+    for (let p = 0; p < 30; p++) {
+      const angle = (A * 2 + p * 0.5) % 6.28;
+      const radius = 60 + Math.sin(B * 3 + p) * 10;
+      const px = Math.floor(screen_width / 2 + Math.cos(angle) * radius);
+      const py = Math.floor(screen_height / 2 + Math.sin(angle) * radius * 0.4);
+      const pidx = px + screen_width * py;
+      if (pidx >= 0 && pidx < screen_width * screen_height && py >= 0 && py < screen_height) {
+        b[pidx] = ['·', '•', '○', '◉', '*'][p % 5];
+      }
+    }
+
+    // Add the running character at the bottom
+    const runner = runnerFrames[Math.floor(runnerFrame) % runnerFrames.length];
+    const runnerY = screen_height - 5;
+    const runnerX = Math.floor(runnerPos);
+
+    for (let ri = 0; ri < runner.length; ri++) {
+      const line = runner[ri];
+      for (let rj = 0; rj < line.length; rj++) {
+        const char = line[rj];
+        if (char !== ' ') {
+          const rx = runnerX + rj;
+          const ry = runnerY + ri;
+          if (rx >= 0 && rx < screen_width && ry >= 0 && ry < screen_height) {
+            const idx = rx + screen_width * ry;
+            b[idx] = char;
+          }
+        }
+      }
+    }
+
+    // Add ground for the runner
+    const groundY = screen_height - 2;
+    for (let gx = 0; gx < screen_width; gx++) {
+      const idx = gx + screen_width * groundY;
+      b[idx] = ['═', '─', '═'][gx % 3];
+    }
+
+    // Animate rotation and runner
+    A += 0.04;
+    B += 0.02;
+    runnerPos += 1.5;
+    runnerFrame += 0.3;
+    if (runnerPos > screen_width + 10) {
+      runnerPos = -20;
+    }
+
+    // Convert buffer to string
+    let output = '';
+    for (let k = 0; k < screen_height; k++) {
+      output += b.slice(k * screen_width, (k + 1) * screen_width).join('') + '\n';
+    }
+
+    donutEl.textContent = output;
+  }
+
+  // Start the ULTIMATE neural drive animation
+  setInterval(renderDonut, 50);
+
+  // Animated counter for neural pathways
+  const pathwaysEl = document.getElementById('pathways');
+  let count = 0;
+  const target = 424242;
+  const duration = 3000;
+  const increment = target / (duration / 50);
+
+  const counter = setInterval(() => {
+    count += increment;
+    if (count >= target) {
+      count = target;
+      clearInterval(counter);
+    }
+    if (pathwaysEl) {
+      pathwaysEl.textContent = Math.floor(count).toLocaleString();
+    }
+  }, 50);
+</script>
+</BaseLayout>
