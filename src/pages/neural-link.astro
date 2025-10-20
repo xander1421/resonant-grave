@@ -535,29 +535,98 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   let runnerPos = 0;
   let runnerFrame = 0;
 
-  // Running character frames (main character escaping consciousness upload)
+  // Running character frames (hero escaping consciousness upload)
   const runnerFrames = [
     [
-      '    O    ',
-      '   /|\\   ',
-      '   / \\   '
+      '  o ',
+      ' /|\\',
+      ' / >'
     ],
     [
-      '    O    ',
-      '  _/|\\   ',
-      '    |\\   '
+      '  o ',
+      ' /|\\',
+      ' ><  '
     ],
     [
-      '    O    ',
-      '   /|\\__ ',
-      '   /|    '
+      '  o ',
+      ' /|\\',
+      '< \\ '
     ],
     [
-      '    O    ',
-      '   /|\\   ',
-      '  _/ \\   '
+      '  o ',
+      ' /|\\',
+      ' ><  '
     ]
   ];
+
+  // Robot pursuers (consciousness upload enforcers)
+  const robotFrames = [
+    [
+      ' [O_O]',
+      ' |╫╫╫|',
+      ' | | |',
+      '  > < '
+    ],
+    [
+      ' [O_O]',
+      ' |╫╫╫|',
+      ' | | |',
+      ' >   <'
+    ],
+    [
+      ' [0_0]',
+      ' |╫╫╫|',
+      ' | | |',
+      '  > < '
+    ],
+    [
+      ' [0_0]',
+      ' |╫╫╫|',
+      ' | | |',
+      ' >   <'
+    ]
+  ];
+
+  // BOSS ROBOT - Bigger and more intimidating
+  const bossRobotFrames = [
+    [
+      ' ╔═══════╗',
+      ' ║[█_█]║',
+      ' ║ ╫╫╫╫╫ ║',
+      ' ║ |║|║| ║',
+      ' ╚═══════╝',
+      '  >>  << '
+    ],
+    [
+      ' ╔═══════╗',
+      ' ║[█_█]║',
+      ' ║ ╫╫╫╫╫ ║',
+      ' ║ |║|║| ║',
+      ' ╚═══════╝',
+      ' >>    <<'
+    ],
+    [
+      ' ╔═══════╗',
+      ' ║[■_■]║',
+      ' ║ ╫╫╫╫╫ ║',
+      ' ║ |║|║| ║',
+      ' ╚═══════╝',
+      '  >>  << '
+    ],
+    [
+      ' ╔═══════╗',
+      ' ║[■_■]║',
+      ' ║ ╫╫╫╫╫ ║',
+      ' ║ |║|║| ║',
+      ' ╚═══════╝',
+      ' >>    <<'
+    ]
+  ];
+
+  let robot1Pos = -40;
+  let robot2Pos = -80;
+  let bossRobotPos = -130;
+  let robotFrame = 0;
 
   function renderDonut() {
     if (!donutEl) return;
@@ -624,7 +693,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     // Add the running character at the bottom
     const runner = runnerFrames[Math.floor(runnerFrame) % runnerFrames.length];
-    const runnerY = screen_height - 5;
+    const runnerY = screen_height - 6;
     const runnerX = Math.floor(runnerPos);
 
     for (let ri = 0; ri < runner.length; ri++) {
@@ -634,6 +703,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         if (char !== ' ') {
           const rx = runnerX + rj;
           const ry = runnerY + ri;
+          if (rx >= 0 && rx < screen_width && ry >= 0 && ry < screen_height) {
+            const idx = rx + screen_width * ry;
+            b[idx] = char;
+          }
+        }
+      }
+    }
+
+    // Add pursuing robots
+    const robot = robotFrames[Math.floor(robotFrame) % robotFrames.length];
+    const robotY = screen_height - 7;
+
+    // Robot 1
+    const r1x = Math.floor(robot1Pos);
+    for (let ri = 0; ri < robot.length; ri++) {
+      const line = robot[ri];
+      for (let rj = 0; rj < line.length; rj++) {
+        const char = line[rj];
+        if (char !== ' ') {
+          const rx = r1x + rj;
+          const ry = robotY + ri;
+          if (rx >= 0 && rx < screen_width && ry >= 0 && ry < screen_height) {
+            const idx = rx + screen_width * ry;
+            b[idx] = char;
+          }
+        }
+      }
+    }
+
+    // Robot 2
+    const r2x = Math.floor(robot2Pos);
+    for (let ri = 0; ri < robot.length; ri++) {
+      const line = robot[ri];
+      for (let rj = 0; rj < line.length; rj++) {
+        const char = line[rj];
+        if (char !== ' ') {
+          const rx = r2x + rj;
+          const ry = robotY + ri;
+          if (rx >= 0 && rx < screen_width && ry >= 0 && ry < screen_height) {
+            const idx = rx + screen_width * ry;
+            b[idx] = char;
+          }
+        }
+      }
+    }
+
+    // BOSS ROBOT - Larger and more menacing
+    const bossRobot = bossRobotFrames[Math.floor(robotFrame) % bossRobotFrames.length];
+    const bossY = screen_height - 9;
+    const bossX = Math.floor(bossRobotPos);
+    for (let ri = 0; ri < bossRobot.length; ri++) {
+      const line = bossRobot[ri];
+      for (let rj = 0; rj < line.length; rj++) {
+        const char = line[rj];
+        if (char !== ' ') {
+          const rx = bossX + rj;
+          const ry = bossY + ri;
           if (rx >= 0 && rx < screen_width && ry >= 0 && ry < screen_height) {
             const idx = rx + screen_width * ry;
             b[idx] = char;
@@ -656,6 +782,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     runnerFrame += 0.3;
     if (runnerPos > screen_width + 10) {
       runnerPos = -20;
+    }
+
+    // Animate robots (EXACT same speed to maintain spacing)
+    robot1Pos += 1.5;
+    robot2Pos += 1.5;
+    bossRobotPos += 1.5;
+    robotFrame += 0.25;
+
+    // Reset with proper spacing maintained
+    if (robot1Pos > screen_width + 10) {
+      robot1Pos = -40;
+    }
+    if (robot2Pos > screen_width + 10) {
+      robot2Pos = -80;
+    }
+    if (bossRobotPos > screen_width + 15) {
+      bossRobotPos = -130;
     }
 
     // Convert buffer to string
