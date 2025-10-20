@@ -39,8 +39,13 @@ const { chapter } = Astro.props;
 const chapterPath = path.join(process.cwd(), 'src', 'content', chapter.contentFile);
 const chapterContent = await fs.readFile(chapterPath, 'utf-8');
 
-// Parse the content
-const htmlContent = marked(chapterContent);
+// Extract title from markdown H1 (use the full title as-is)
+const h1Match = chapterContent.match(/^#\s+(.+)$/m);
+const markdownTitle = h1Match ? h1Match[1] : `Chapter ${chapter.number} — ${chapter.title}`;
+
+// Parse the content and remove the first H1 (we'll use it in the header)
+let htmlContent = marked(chapterContent);
+htmlContent = htmlContent.replace(/<h1[^>]*>.*?<\/h1>/i, '');
 ---
 
 <BaseLayout title={`Chapter ${chapter.number}: ${chapter.title}`}>
@@ -58,8 +63,7 @@ const htmlContent = marked(chapterContent);
       </div>
       
       <div class="chapter-info">
-        <span class="chapter-label">CHAPTER {chapter.number.toString().padStart(2, '0')}</span>
-        <h1 class="chapter-title glitch" data-text={chapter.title}>{chapter.title}</h1>
+        <h1 class="chapter-title glitch" data-text={markdownTitle}>{markdownTitle}</h1>
         <div class="chapter-stats">
           <span class="stat">
             <span class="stat-label">FREQUENCY:</span>

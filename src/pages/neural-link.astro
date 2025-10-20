@@ -623,9 +623,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     ]
   ];
 
-  let robot1Pos = -40;
-  let robot2Pos = -80;
-  let bossRobotPos = -130;
+  // All characters move together - maintain fixed spacing offsets
+  let basePos = 0;
+  const runnerOffset = 0;
+  const robot1Offset = -30;    // Robots run as a tight group
+  const robot2Offset = -40;    // Just 10 pixels apart
+  const bossOffset = -55;      // Boss close behind
   let robotFrame = 0;
 
   function renderDonut() {
@@ -690,6 +693,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         b[pidx] = ['·', '•', '○', '◉', '*'][p % 5];
       }
     }
+
+    // Calculate positions based on basePos + offsets
+    const runnerPos = basePos + runnerOffset;
+    const robot1Pos = basePos + robot1Offset;
+    const robot2Pos = basePos + robot2Offset;
+    const bossRobotPos = basePos + bossOffset;
 
     // Add the running character at the bottom
     const runner = runnerFrames[Math.floor(runnerFrame) % runnerFrames.length];
@@ -775,30 +784,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       b[idx] = ['═', '─', '═'][gx % 3];
     }
 
-    // Animate rotation and runner
+    // Animate rotation
     A += 0.04;
     B += 0.02;
-    runnerPos += 1.5;
-    runnerFrame += 0.3;
-    if (runnerPos > screen_width + 10) {
-      runnerPos = -20;
-    }
 
-    // Animate robots (EXACT same speed to maintain spacing)
-    robot1Pos += 1.5;
-    robot2Pos += 1.5;
-    bossRobotPos += 1.5;
+    // Move all characters together as one formation
+    basePos += 1.5;
+    runnerFrame += 0.3;
     robotFrame += 0.25;
 
-    // Reset with proper spacing maintained
-    if (robot1Pos > screen_width + 10) {
-      robot1Pos = -40;
-    }
-    if (robot2Pos > screen_width + 10) {
-      robot2Pos = -80;
-    }
-    if (bossRobotPos > screen_width + 15) {
-      bossRobotPos = -130;
+    // Reset the entire formation when runner goes off screen
+    if (basePos + runnerOffset > screen_width + 10) {
+      basePos = -20;
     }
 
     // Convert buffer to string

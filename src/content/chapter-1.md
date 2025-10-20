@@ -1,6 +1,6 @@
 # Chapter 1 — The Crucible
 
-The world began with a hum.  
+The world began with a hum.
 A note so deep it lived inside metal, inside bone, inside whatever still called itself human.
 
 Beneath the broken crust of a dying star, the **Crucible** sang its endless hymn. Vats the size of cities pulsed in the dark, each filled with liquid light that used to be people. Every hour, ten thousand bodies entered the vats willingly, and ten thousand new suns were born—slaves made into starlight. Pump lines glowed like dying dawns, reeking of iron and old dreams. The hum never stopped; it was the heartbeat of industry that turned humanity into energy.
